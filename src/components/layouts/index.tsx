@@ -5,21 +5,11 @@ import { useCreateReducer } from "@/hooks/useCreateReducer";
 import { HomeInitialState, initialState } from "@/state/index.state";
 import {
     AppShell,
-    Burger,
-    Button,
     ColorSchemeProvider,
     MantineProvider,
-    MantineThemeOverride,
     Navbar,
     useMantineTheme,
-    Footer,
-    Text,
-    MediaQuery,
     Header,
-    Aside,
-    Flex,
-    TextInput,
-    Accordion
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { IconBuildings, IconContract, IconHeart, IconHome, IconWorldSearch } from "@tabler/icons-react";
@@ -93,6 +83,13 @@ const Layout: FC<Props> = ({ children }) => {
                             'money': ["#00ff8c"]
                         },
                         components: {
+                            Text: {
+                                styles: (theme) => ({
+                                    root: {
+                                        color: "white"
+                                    }
+                                })
+                            },
                             Accordion: {
                                 styles: (theme) => ({
                                     control: {
@@ -171,6 +168,17 @@ const Layout: FC<Props> = ({ children }) => {
                                     }
                                 }),
                             },
+                            Modal: {
+                                styles: (theme) => ({
+                                    body: {
+                                        backgroundColor: theme.colors["bg-colors"][0],
+                                        padding: 0
+                                    },
+                                    header: {
+                                        backgroundColor: theme.colors["bg-colors"][0],
+                                    }
+                                })
+                            },
                             Select: {
                                 styles: (theme) => ({
                                     dropdown: {
@@ -221,7 +229,7 @@ const Layout: FC<Props> = ({ children }) => {
                                 </Navbar>
                             }
                             header={
-                                <Header height={{ base: 50, md: 70 }} p="md">
+                                <Header height={{ base: 70, md: 70 }} p="md">
                                     <MyHeader 
                                         pages={pages}
                                     />

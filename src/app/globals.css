@@ -1,3 +1,6 @@
+body, div, tr, td, tbody, span, input, select, label, tspan, h1, h2, h3, h4, h5, h6 {
+  font-family: "Roboto",arial,sans-serif !important;
+}
 .mantine-Header-root {
   background-color: #0d2945;
   border: none;

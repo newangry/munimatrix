@@ -5,7 +5,8 @@ import { ActionIcon, Burger, Drawer, Flex, Select, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBellRinging, IconBellRinging2, IconRings, IconSearch, IconSettingsQuestion, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-import { FC, useContext, useEffect, useState } from "react"
+import { FC, useContext, useEffect, useState } from "react";
+import isMobile from "@/components/isMobile";
 interface Props {
     pages: PageProps[]
 }
@@ -52,7 +53,8 @@ const MyHeader: FC<Props> = ({ pages }) => {
                 data={[]}
                 id="search"
                 sx={(theme) => ({
-                    width: 500,
+                    width: isMobile() ? 300 : 500,
+                    display: isMobile() ? "none" : "block",
                     input: {
                         background: "transparent",
                         color: "white"

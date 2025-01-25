@@ -8,10 +8,10 @@ const Dashboard = () => {
     return <Box>
         <Filter />
         <Grid>
-            <Grid.Col span={9}>
+            <Grid.Col lg={9} md={9} sm={12}>
                 <MyTable />
             </Grid.Col>
-            <Grid.Col span={3}>
+            <Grid.Col lg={3} md={3} sm={12}>
                 <Information />
             </Grid.Col>
         </Grid>

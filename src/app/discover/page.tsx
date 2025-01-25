@@ -6,10 +6,10 @@ import { Box, Grid } from "@mantine/core";
 const Discover = () => {
     return <Box>
         <Grid>
-            <Grid.Col span={3}>
+            <Grid.Col md={3} sm={12} lg={3}>
                 <Filter />
             </Grid.Col>
-            <Grid.Col span={9}>
+            <Grid.Col md={9} sm={12} lg={9}>
                 <Information />
             </Grid.Col>
         </Grid>
