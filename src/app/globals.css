@@ -15,3 +15,22 @@
   background-color: #071b2e;
   padding-left: 100px;
 }
+
+thead, tr, th, td {
+  border-color: #20456a !important;
+  color: white;
+  text-align: center;
+}
+th {
+  text-align: center !important;
+}
+
+.mantine-Pagination-control {
+  background: transparent;
+  border-color: #098db5;
+  color: #098db5;
+}
+
+#search .mantine-Select-dropdown {
+  background: #0d2945
+}

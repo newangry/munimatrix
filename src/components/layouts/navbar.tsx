@@ -1,8 +1,9 @@
 "use client"
 import { Flex, Box, Text } from "@mantine/core";
-import { FC, useEffect, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { useRouter } from 'next/navigation'
 import { PageProps } from "@/types/layout";
+import HomeContext from "@/state/index.context";
 
 interface Props {
     pages: PageProps[]
@@ -11,11 +12,14 @@ interface Props {
 const MyNavbar: FC<Props> = ({ pages }) => {
     
     const router = useRouter();
-    const [page, setPage] = useState<string>('');
     
+    const {
+        state: { page },
+        dispatch: homeDispatch,
+    } = useContext(HomeContext);
+
     useEffect(() => {
         console.log(pages);
-        setPage(window.location.pathname);
     }, [])
     
     return (
@@ -37,6 +41,13 @@ const MyNavbar: FC<Props> = ({ pages }) => {
                         direction={'column'}
                         align={'center'}
                         justify={'center'}
+                        onClick={() => {
+                            router.push(page_.path);
+                            homeDispatch({
+                                "field": 'page',
+                                "value": page_.path
+                            })
+                        }}
                     >
                         { page_.icon }
                         <Text

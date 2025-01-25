@@ -4,6 +4,7 @@ import { PageProps } from "@/types/layout";
 import { ActionIcon, Burger, Drawer, Flex, Select, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBellRinging, IconBellRinging2, IconRings, IconSearch, IconSettingsQuestion, IconUser } from "@tabler/icons-react";
+import { useRouter } from "next/navigation";
 import { FC, useContext, useEffect, useState } from "react"
 interface Props {
     pages: PageProps[]
@@ -12,19 +13,16 @@ interface Props {
 const MyHeader: FC<Props> = ({ pages }) => {
     const [searchValue, onSearchChange] = useState('');
     const [opened, { open, close }] = useDisclosure(false);
-    const [page, setPage] = useState<string>('');
+    const router = useRouter();
 
     const {
-        state: { openDrawer },
+        state: { page },
         dispatch: homeDispatch,
     } = useContext(HomeContext);
 
     useEffect(() => {
-        setPage(
-            window.location.pathname
-        )
     }, [])
-    
+
     return (
         <Flex
             justify={'space-between'}
@@ -44,16 +42,21 @@ const MyHeader: FC<Props> = ({ pages }) => {
                 </Text>
             </Flex>
             <Select
-                placeholder="Pick one"
+                placeholder="Search"
                 searchable
                 onSearchChange={onSearchChange}
                 searchValue={searchValue}
                 nothingFound="No options"
                 size="md"
                 icon={<IconSearch size="1.2rem" />}
-                data={['React', 'Angular', 'Svelte', 'Vue']}
+                data={[]}
+                id="search"
                 sx={(theme) => ({
-                    width: 500
+                    width: 500,
+                    input: {
+                        background: "transparent",
+                        color: "white"
+                    }
                 })}
             />
             <Flex
@@ -69,7 +72,7 @@ const MyHeader: FC<Props> = ({ pages }) => {
                     <IconUser />
                 </ActionIcon>
             </Flex>
-            <Drawer opened={opened} onClose={close} title="Authentication" size={'250px'}>
+            <Drawer opened={opened} onClose={close} title="LogoIcon" size={'250px'}>
                 <Flex
                     direction={'column'}
                     gap={30}
@@ -80,14 +83,22 @@ const MyHeader: FC<Props> = ({ pages }) => {
                             <Flex
                                 gap={20}
                                 key={`header-page-${index}`}
-                                sx={(theme) =>({
+                                sx={(theme) => ({
                                     cursor: 'pointer'
                                 })}
+                                onClick={() => {
+                                    router.push(_page.path);
+                                    homeDispatch({
+                                        "field": 'page',
+                                        "value": _page.path
+                                    })
+                                    close()
+                                }}
                             >
                                 {_page.icon}
                                 <Text
                                     sx={(theme) => ({
-                                        color:  page == _page.path ? "white" : theme.colors.gray[6]
+                                        color: page == _page.path ? "white" : theme.colors.gray[6]
                                     })}
                                 >
                                     {_page.name}

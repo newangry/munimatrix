@@ -18,7 +18,8 @@ import {
     Header,
     Aside,
     Flex,
-    TextInput
+    TextInput,
+    Accordion
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { IconBuildings, IconContract, IconHeart, IconHome, IconWorldSearch } from "@tabler/icons-react";
@@ -86,11 +87,45 @@ const Layout: FC<Props> = ({ children }) => {
                         }),
                         colors: {
                             'btn-primary': ['#0562b1', '#5699ff'],
-                            'border': ["#266467"],
+                            'border': ["#266467", "#20456a"],
                             'link': ["#098db5"],
-                            'bg-colors': ["#20456a"] 
+                            'bg-colors': ["#0d2945"],
+                            'money': ["#00ff8c"]
                         },
                         components: {
+                            Accordion: {
+                                styles: (theme) => ({
+                                    control: {
+                                        color: "white",
+                                        borderBottom: "none",
+                                        '&:hover': {
+                                            backgroundColor: "transparent"
+                                        },
+                                        paddingLeft: '0px'
+                                    },
+                                    panel: {
+                                        color: "white"
+                                    },
+                                    item: {
+                                        borderBottom: "none",
+                                        borderTop: `1px solid ${theme.colors.border[1]}`,
+                                        color: "white"
+                                    },
+                                })
+                            },
+                            Table: {
+                                styles: (theme) => ({
+                                    thead: {
+                                        borderColor: theme.colors.border
+                                    },
+                                    tr: {
+                                        borderColor: theme.colors.border
+                                    },
+                                    th: {
+                                        borderColor: theme.colors.border
+                                    }
+                                })
+                            },
                             Input: {
                                 styles: (theme) => ({
                                     input: {
@@ -142,6 +177,13 @@ const Layout: FC<Props> = ({ children }) => {
                                         backgroundColor: "#0d2945",
                                         color: "white",
                                         borderColor: '#266467'
+                                    },
+                                    label: {
+                                        color: "white"
+                                    },
+                                    input: {
+                                        background: "white",
+                                        color: "black"
                                     },
                                     item: {
                                         color: 'white',

@@ -40,7 +40,7 @@ const Filter: FC<Props> = ({ }) => {
                     <Popover.Dropdown>
                         <Flex
                             sx={(theme) => ({
-                                borderBottom: `1px solid ${theme.colors.border}`,
+                                borderBottom: `1px solid ${theme.colors.border[0]}`,
                             })}
                             p={15}
                             justify={'space-between'}
@@ -64,13 +64,13 @@ const Filter: FC<Props> = ({ }) => {
                             pt={15}
                             pb={15}
                             sx={(theme) => ({
-                                borderBottom: `1px solid ${theme.colors.border}`
+                                borderBottom: `1px solid ${theme.colors.border[0]}`
                             })}
                             m={0}
                         >
                             <Grid.Col span={6}
                                 sx={(theme) => ({
-                                    borderRight: `1px solid ${theme.colors.border}`
+                                    borderRight: `1px solid ${theme.colors.border[0]}`
                                 })}
                                 p={0}
                             >
