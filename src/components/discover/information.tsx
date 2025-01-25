@@ -1,5 +1,6 @@
 import { Box, Center, Flex, Grid, Text } from "@mantine/core";
 import { FC } from "react";
+import isMobile from "@/components/isMobile";
 
 interface Props {
 
@@ -18,6 +19,7 @@ const Information: FC<Props> = ({ }) => {
             sx={(theme) => ({
                 borderBottom: `1px solid ${theme.colors.border[1]}`
             })}
+            direction={ isMobile() ? 'column' : 'row' }
         >
             <Box>
                 <Text
@@ -74,7 +76,7 @@ const Information: FC<Props> = ({ }) => {
         </Flex>
         <Grid
         >
-            <Grid.Col span={4}
+            <Grid.Col sm={12} md={4} lg={4}
                 p={20}
             >
                 <Box
@@ -99,7 +101,7 @@ const Information: FC<Props> = ({ }) => {
                     </Text>
                 </Box>
             </Grid.Col>
-            <Grid.Col span={4}
+            <Grid.Col md={4} lg={4} sm={12}
                 p={20}
             >
                 <Box
@@ -124,7 +126,7 @@ const Information: FC<Props> = ({ }) => {
                     </Text>
                 </Box>
             </Grid.Col>
-            <Grid.Col span={4}
+            <Grid.Col md={4} lg={4} sm={12}
                 p={20}
             >
                 <Box
@@ -156,6 +158,7 @@ const Information: FC<Props> = ({ }) => {
             })}
             pl={30}
             pr={30}
+            direction={ isMobile() ? 'column' : 'row' }
         >
             <Text
                 weight={600}

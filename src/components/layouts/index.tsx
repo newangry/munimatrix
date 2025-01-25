@@ -222,7 +222,7 @@ const Layout: FC<Props> = ({ children }) => {
                             navbarOffsetBreakpoint="sm"
                             asideOffsetBreakpoint="sm"
                             navbar={
-                                <Navbar p="md" hiddenBreakpoint="sm" width={{ sm: 200, lg: 300 }}>
+                                <Navbar p="md" hiddenBreakpoint="sm" >
                                     <MyNavbar
                                         pages={pages}
                                     />

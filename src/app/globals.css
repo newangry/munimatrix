@@ -12,11 +12,17 @@ body, div, tr, td, tbody, span, input, select, label, tspan, h1, h2, h3, h4, h5,
   min-width: 80px;
   border: none;
   padding: 0px;
+  @media(max-width: 768px) {
+    display: none;
+  }
 }
 
 .mantine-AppShell-main {
   background-color: #071b2e;
   padding-left: 100px;
+  @media(max-width: 768px) {
+    padding-left: 15px
+  }
 }
 
 thead, tr, th, td {

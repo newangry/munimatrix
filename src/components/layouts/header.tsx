@@ -22,6 +22,10 @@ const MyHeader: FC<Props> = ({ pages }) => {
     } = useContext(HomeContext);
 
     useEffect(() => {
+        homeDispatch(({
+            "field": "page",
+            "value": window.location.pathname
+        }))
     }, [])
 
     return (
