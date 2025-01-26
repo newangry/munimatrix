@@ -174,6 +174,10 @@ const Layout: FC<Props> = ({ children }) => {
                                         backgroundColor: theme.colors["bg-colors"][0],
                                         padding: 0
                                     },
+                                    content: {
+                                        backgroundColor: theme.colors["bg-colors"][0],
+                                        padding: 0
+                                    },
                                     header: {
                                         backgroundColor: theme.colors["bg-colors"][0],
                                     }
