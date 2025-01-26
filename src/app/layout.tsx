@@ -3,6 +3,20 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layouts";
 
+const originalConsoleError = console.error;
+
+console.error = (message, ...args) => {
+  console.log(message);
+  if (message.includes("Accessing element.ref was removed in React 19. ref is")) {
+    // Suppress this error
+    return;
+  }
+  originalConsoleError(message, ...args); // For other errors, log as usual
+};
+
+console.error = originalConsoleError;
+
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,6 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <title>Munimatrix</title>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <Layout>
           {children}

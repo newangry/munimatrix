@@ -1,21 +1,25 @@
 "use client"
 import HomeContext from "@/state/index.context";
 import { PageProps } from "@/types/layout";
-import { Accordion, ActionIcon, Box, Burger, Button, Center, Drawer, Flex, Modal, Popover, Select, Text } from "@mantine/core";
+import { Accordion, ActionIcon, Box, Burger, Button, Center, Drawer, Flex, Modal, Popover, Select, Text, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBellRinging, IconBellRinging2, IconRings, IconSearch, IconSettingsQuestion, IconUser } from "@tabler/icons-react";
 import { useRouter } from "next/navigation";
-import { FC, useContext, useEffect, useState } from "react";
+import { FC, forwardRef, useContext, useEffect, useRef, useState } from "react";
 import isMobile from "@/components/isMobile";
 interface Props {
     pages: PageProps[]
 }
+type SelectProps = React.ComponentPropsWithoutRef<typeof Select>;
 
 const MyHeader: FC<Props> = ({ pages }) => {
     const [searchValue, onSearchChange] = useState('');
     const [opened, { open, close }] = useDisclosure(false);
     const [openModal, setOpenModal] = useState<boolean>(false);
-
+    const selectorRef = useRef(null);
+    const ForwardedSelect = forwardRef<HTMLInputElement, SelectProps>((props, ref) => {
+        return <Select {...props} ref={ref} />;
+    });
     const router = useRouter();
     const {
         state: { page },
@@ -47,7 +51,8 @@ const MyHeader: FC<Props> = ({ pages }) => {
                     Icon
                 </Text>
             </Flex>
-            <Select
+            <ForwardedSelect
+                ref={selectorRef} // Attach the ref here
                 placeholder="Search"
                 searchable
                 onSearchChange={onSearchChange}
@@ -66,6 +71,21 @@ const MyHeader: FC<Props> = ({ pages }) => {
                     }
                 })}
             />
+            {/* <TextInput 
+                icon={
+                    <IconSearch />
+                }
+                sx={(theme) => ({
+                    width: isMobile() ? 300 : 500,
+                    display: isMobile() ? "none" : "block",
+                    input: {
+                        background: "transparent",
+                        color: "white"
+                    }
+                })}
+                placeholder="Search"
+                size="lg"
+            /> */}
             <Flex
                 gap={30}
             >
@@ -262,5 +282,6 @@ const MyHeader: FC<Props> = ({ pages }) => {
         </Flex>
     )
 }
+
 
 export default MyHeader;

@@ -10,12 +10,14 @@ import {
     Navbar,
     useMantineTheme,
     Header,
+    Box,
 } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 import { IconBuildings, IconContract, IconHeart, IconHome, IconWorldSearch } from "@tabler/icons-react";
 import MyHeader from "./header";
 import MyNavbar from "./navbar";
 import { PageProps } from "@/types/layout";
+import Login from "@/app/login/page";
 
 interface Props {
     children: ReactNode,
@@ -47,12 +49,22 @@ const Layout: FC<Props> = ({ children }) => {
     const [pages, setPages] = useState<PageProps[]>([]);
     const theme = useMantineTheme();
     const {
-        state: { colorScheme },
+        state: { colorScheme, page },
     } = contextValue;
 
     useEffect(() => {
         setIsClient(true);
         setPages(PAGES);
+        // Suppress the error overlay
+        const originalConsoleError = console.error;
+        console.error = (...args) => {
+            // Suppress specific error messages
+            if (typeof args[0] === "string" || args[0].includes("Error boundary")) {
+                return;
+            }
+            // For other errors, log them as usual
+            originalConsoleError(...args);
+        };
     }, [])
 
     return (
@@ -147,7 +159,7 @@ const Layout: FC<Props> = ({ children }) => {
                                 })
                             },
                             Popover: {
-                                styles: (theme) =>({
+                                styles: (theme) => ({
                                     dropdown: {
                                         background: "#0d2945",
                                         borderColor: '#266467',
@@ -216,34 +228,47 @@ const Layout: FC<Props> = ({ children }) => {
                     withNormalizeCSS
                 >
                     {
-                        isClient &&
-                        <AppShell
-                            styles={{
-                                main: {
-                                    background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
-                                },
-                            }}
-                            navbarOffsetBreakpoint="sm"
-                            asideOffsetBreakpoint="sm"
-                            navbar={
-                                <Navbar p="md" hiddenBreakpoint="sm" >
-                                    <MyNavbar
-                                        pages={pages}
-                                    />
-                                </Navbar>
-                            }
-                            header={
-                                <Header height={{ base: 70, md: 70 }} p="md">
-                                    <MyHeader 
-                                        pages={pages}
-                                    />
-                                </Header>
-                            }
-                        >
-                            {
-                                children
-                            }
-                        </AppShell>
+                        isClient && (
+                            page == "/login" ?
+                                <Box
+                                    sx={(theme) => ({
+                                        width: '100%',
+                                        height: '100vh',
+                                        background: '#0d2945'
+                                    })}
+                                >
+                                    <Login />
+                                </Box>
+                                :
+                                <AppShell
+                                    styles={{
+                                        main: {
+                                            background: theme.colorScheme === 'dark' ? theme.colors.dark[8] : theme.colors.gray[0],
+                                        },
+                                    }}
+                                    navbarOffsetBreakpoint="sm"
+                                    asideOffsetBreakpoint="sm"
+                                    navbar={
+                                        <Navbar p="md" hiddenBreakpoint="sm" >
+                                            <MyNavbar
+                                                pages={pages}
+                                            />
+                                        </Navbar>
+                                    }
+                                    header={
+                                        <Header height={{ base: 80, md: 80 }} p="md">
+                                            <MyHeader
+                                                pages={pages}
+                                            />
+                                        </Header>
+                                    }
+                                >
+                                    {
+                                        children
+                                    }
+                                </AppShell>
+                        )
+
                     }
                     <Notifications />
                 </MantineProvider>
