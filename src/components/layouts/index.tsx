@@ -59,9 +59,7 @@ const Layout: FC<Props> = ({ children }) => {
         const originalConsoleError = console.error;
         console.error = (...args) => {
             // Suppress specific error messages
-            if (typeof args[0] === "string" || args[0].includes("Error boundary")) {
-                return;
-            }
+            return;
             // For other errors, log them as usual
             originalConsoleError(...args);
         };
