@@ -2,6 +2,7 @@
 import HomeContext from "@/state/index.context";
 import { FC, ReactNode, useContext, useEffect, useState } from "react"
 import Search from "./search";
+import { useRouter } from "next/navigation";
 interface Props {
 }
 
@@ -15,7 +16,7 @@ const Header: FC<Props> = ({
         state: { hidden_sidebar },
         dispatch: homeDispatch,
     } = useContext(HomeContext);
-
+    const router = useRouter();
     useEffect(() => {
 
     }, []);
@@ -51,27 +52,8 @@ const Header: FC<Props> = ({
                 </h1>
             </div>
 
-            <div
-                className="relative inline-flex max-w-search-box 2xl:max-w-full gap-2 py-2 px-4 items-center w-full rounded-md border border-solid border-darkslategray focus-within:border-blue-50"
-                role="search"
-            >
-                <img className="h-6 w-6" alt="Search" src="/images/search.svg" />
-                <input
-                    id="searchInput"
-                    className="search-input"
-                    placeholder="Search"
-                // autocomplete="off"
-                />
-
-                <img
-                    id="clearIcon"
-                    className="h-6 w-6 cursor-pointer hidden"
-                    alt="Clear"
-                    src="/images/clear.svg"
-                />
-                <Search />
-            </div>
-
+            <Search />
+            
             <div className="flex items-center justify-between gap-10">
                 <div className="icon-button"
                     onClick={() => {
@@ -127,6 +109,9 @@ const Header: FC<Props> = ({
                             id="btnLogout"
                             className="logout-button"
                             aria-label="Log out of your account"
+                            onClick={() => {
+                                router.push("/login");
+                            }}
                         >
                             Logout
                         </button>

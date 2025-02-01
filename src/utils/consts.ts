@@ -42,11 +42,10 @@ export const INFORMATION_DATA = {
             title: "28 Contracts", amount: "$200,000.00", data:[
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
-                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" }
-            ]
-        },
-        {
-            title: "28 Contracts", amount: "$200,000.00", data:[
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" }
@@ -56,11 +55,27 @@ export const INFORMATION_DATA = {
             title: "28 Contracts", amount: "$200,000.00", data:[
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" }
             ]
         },
         {
             title: "28 Contracts", amount: "$200,000.00", data:[
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" }
+            ]
+        },
+        {
+            title: "28 Contracts", amount: "$200,000.00", data:[
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
+                { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" },
                 { title: "Environmental", amount: "$237,000.00", date: "Sep 30" }

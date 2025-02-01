@@ -26,9 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <title>
+        Mnunimatrix
+      </title>
       <body
         className="bg-background flex flex-col h-screen"
-      >
+      >        
         <Layout>
           {children}
         </Layout>

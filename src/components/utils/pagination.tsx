@@ -26,7 +26,7 @@ const Pagination = () => {
                     </a>
                 </li>
                 <li>
-                    <a className="pagination-number" href="#">1</a>
+                    <a className="pagination-number pagination-active" href="#">1</a>
                 </li>
                 <li>
                     <a className="pagination-number" href="#">2</a>

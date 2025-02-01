@@ -12,7 +12,7 @@ const Filter = () => {
                         className="[text-decoration:none] h-[19px] relative font-bold text-[inherit] inline-block leading-5"
                     >Ausbury Park
                     </a>
-                    <span className="tab-close-button"
+                    <span className="tab-close-button hidden"
                     >
                         <img
                             className="w-full h-full"
@@ -37,7 +37,7 @@ const Filter = () => {
                     </span>
                 </button>
 
-                <button className="shrink-0 p-2 w-9 h-9 icon-button">
+                <button className="shrink-0 p-2 w-9 h-9 icon-button">   
                     <img
                         className="w-full h-full"
                         loading="lazy"

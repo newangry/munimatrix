@@ -12,7 +12,7 @@ const DetailModal:FC<Props> = ({ isHiddenModal, setIsHiddenModal }) => {
         >
             <div
                 className="max-w-event-popup w-full rounded-xl bg-background text-white font-body overflow-hidden"
-            >
+            > 
                 <div
                     className="flex justify-between py-6 pl-10 pr-4 border-b border-solid border-border"
                 >
