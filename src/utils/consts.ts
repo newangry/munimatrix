@@ -83,3 +83,44 @@ export const INFORMATION_DATA = {
         }
     ]
 }
+
+export const MENU = [
+    {name: "Home", path: "/home", icon: "home.svg", enable: true},
+    {name: "Discover", path: "/discover", icon: "discover.svg", enable: true},
+    {name: "Companies", path: "/companies", icon: "building--business.svg", enable: false},
+    {name: "Saved searches", path: "/saved_searches", icon: "basic--heart-outline.svg", enable: false},
+    {name: "Contacts", path: "/contacts", icon: "user--group.svg", enable: false},
+];
+
+export const FAQ_DATA = [
+    {
+        title: "What is Munimatrix&quest;", content: `Libero eleifend nec maximus nibh massa etiam&period;
+                      Aliquet et augue sollicitudin litora at&quest; Magnis
+                      cubilia dignissim netus class duis odio mauris&period;
+                      Rutrum neque sociosqu&period;`
+    },
+    {
+        title: "Tristique torquent phasellus ut in parturient&quest;", content: `Libero eleifend nec maximus nibh massa etiam&period;
+                      Aliquet et augue sollicitudin litora at&quest; Magnis
+                      cubilia dignissim netus class duis odio mauris&period;
+                      Rutrum neque sociosqu&period;`
+    },
+    {
+        title: "Tristique torquent phasellus ut in parturient&quest;", content: ""
+    },
+    {
+        title: "Pellentesque lacus integer&comma; eget rutrum liberoinceptos&quest;", content: `Libero eleifend nec maximus nibh massa etiam&period;
+                      Aliquet et augue sollicitudin litora at&quest; Magnis
+                      cubilia dignissim netus class duis odio mauris&period;
+                      Rutrum neque sociosqu&period;`
+    },
+    {
+        title: "Pellentesque lacus integer&comma; eget rutrum liberonceptos&quest;", content: ""
+    },
+    {
+        title: "Etiam rutrum neque viverra egestas vehicula aliquam&quest;", content: `Libero eleifend nec maximus nibh massa etiam&period;
+                      Aliquet et augue sollicitudin litora at&quest; Magnis
+                      cubilia dignissim netus class duis odio mauris&period;
+                      Rutrum neque sociosqu&period;`
+    }
+]

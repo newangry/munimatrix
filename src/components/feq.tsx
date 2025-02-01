@@ -1,11 +1,14 @@
 import HomeContext from "@/state/index.context";
-import { useContext } from "react";
+import { FAQ_DATA } from "@/utils/consts";
+import { useContext, useState } from "react";
 
 const Faq = () => {
     const {
         state: { hidden_faq },
         dispatch: homeDispatch,
     } = useContext(HomeContext);
+
+    const [selectedIndex, setSelectedIndex] = useState(0);
 
     return (
         <div
@@ -43,301 +46,73 @@ const Faq = () => {
                         <ul
                             className="flex flex-col items-start justify-start max-w-faq-list w-full p-0"
                         >
-                            <li id="q001" className="faq-item">
-                                <div
-                                    className="hidden"
-                                    data-collapse-item
-                                    data-collapse-item-expanded
-                                >
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">What is Munimatrix&quest;</h3>
+                            {
+                                FAQ_DATA.map((item, index) =>
+                                    <li key={`faq-item-${index}`} className="faq-item">
+                                        <div
+                                            className={selectedIndex == index ? "" : "hidden"}
+                                            data-collapse-item
+                                            data-collapse-item-expanded
+                                        >
+                                            <div className="faq-item-header">
+                                                <h3 className="text-lg leading-6"
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: item.title
+                                                    }}
+                                                ></h3>
 
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-up.svg"
-                                            />
-                                        </button>
-                                    </div>
+                                                <button className="icon-button collapse-button"
+                                                    onClick={() => {
+                                                        setSelectedIndex(-1);
+                                                    }}
+                                                >
+                                                    <img
+                                                        className="h-full w-full"
+                                                        loading="lazy"
+                                                        alt="Toggle button"
+                                                        src="/images/arrow--chevron-big-up.svg"
+                                                    />
+                                                </button>
+                                            </div>
 
-                                    <div className="mt-4 grid">
-                                        <p className="faq-description">
-                                            Libero eleifend nec maximus nibh massa etiam&period;
-                                            Aliquet et augue sollicitudin litora at&quest; Magnis
-                                            cubilia dignissim netus className duis odio mauris&period;
-                                            Rutrum neque sociosqu&period;
-                                        </p>
-                                    </div>
-                                </div>
+                                            <div className="mt-4 grid">
+                                                <p className="faq-description"
+                                                    dangerouslySetInnerHTML={{
+                                                        __html: item.content
+                                                    }}
+                                                >
+                                                </p>
+                                            </div>
+                                        </div>
+                                        {
+                                            selectedIndex != index &&
+                                            <div data-default-item data-collapse-item>
+                                                <div className="faq-item-header">
+                                                    <h3 className="text-lg leading-6"
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: item.title
+                                                        }}
+                                                    ></h3>
+                                                    <button className="icon-button collapse-button"
+                                                        onClick={() => {
+                                                            setSelectedIndex(index)
+                                                        }}
+                                                    >
+                                                        <img
+                                                            className="h-full w-full"
+                                                            loading="lazy"
+                                                            alt="Toggle button"
+                                                            src="/images/arrow--chevron-big-down.svg"
+                                                        />
+                                                    </button>
 
-                                <div data-default-item data-collapse-item>
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">What is Munimatrix&quest;</h3>
+                                                </div>
+                                            </div>
+                                        }
 
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-down.svg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li id="q002" className="faq-item">
-                                <div
-                                    className="hidden"
-                                    data-collapse-item
-                                    data-collapse-item-expanded
-                                >
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Tristique torquent phasellus ut in parturient&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-up.svg"
-                                            />
-                                        </button>
-                                    </div>
-
-                                    <div className="mt-4 grid">
-                                        <p className="faq-description">
-                                            Libero eleifend nec maximus nibh massa etiam&period;
-                                            Aliquet et augue sollicitudin litora at&quest; Magnis
-                                            cubilia dignissim netus className duis odio mauris&period;
-                                            Rutrum neque sociosqu&period;
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div data-default-item data-collapse-item>
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Tristique torquent phasellus ut in parturient&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-down.svg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li id="q003" className="faq-item">
-                                <div
-                                    className="hidden"
-                                    data-collapse-item
-                                    data-collapse-item-expanded
-                                >
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Pellentesque lacus integer&comma; eget rutrum libero
-                                            inceptos&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-up.svg"
-                                            />
-                                        </button>
-                                    </div>
-
-                                    <div className="mt-4 grid">
-                                        <p className="faq-description">
-                                            Libero eleifend nec maximus nibh massa etiam&period;
-                                            Aliquet et augue sollicitudin litora at&quest; Magnis
-                                            cubilia dignissim netus className duis odio mauris&period;
-                                            Rutrum neque sociosqu&period;
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div data-default-item data-collapse-item>
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Pellentesque lacus integer&comma; eget rutrum libero
-                                            inceptos&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-down.svg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li id="q004" className="faq-item">
-                                <div
-                                    className="hidden"
-                                    data-collapse-item
-                                    data-collapse-item-expanded
-                                >
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Etiam rutrum neque viverra egestas vehicula aliquam&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-up.svg"
-                                            />
-                                        </button>
-                                    </div>
-
-                                    <div className="mt-4 grid">
-                                        <p className="faq-description">
-                                            Libero eleifend nec maximus nibh massa etiam&period;
-                                            Aliquet et augue sollicitudin litora at&quest; Magnis
-                                            cubilia dignissim netus className duis odio mauris&period;
-                                            Rutrum neque sociosqu&period;
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div data-default-item data-collapse-item>
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Etiam rutrum neque viverra egestas vehicula aliquam&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-down.svg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li id="q005" className="faq-item">
-                                <div
-                                    className="hidden"
-                                    data-collapse-item
-                                    data-collapse-item-expanded
-                                >
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Curabitur morbi sagittis per ridiculus amet himenaeos
-                                            himenaeos&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-up.svg"
-                                            />
-                                        </button>
-                                    </div>
-
-                                    <div className="mt-4 grid">
-                                        <p className="faq-description">
-                                            Libero eleifend nec maximus nibh massa etiam&period;
-                                            Aliquet et augue sollicitudin litora at&quest; Magnis
-                                            cubilia dignissim netus className duis odio mauris&period;
-                                            Rutrum neque sociosqu&period;
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div data-default-item data-collapse-item>
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Curabitur morbi sagittis per ridiculus amet himenaeos
-                                            himenaeos&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-down.svg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
-
-                            <li id="q006" className="faq-item">
-                                <div
-                                    className="hidden"
-                                    data-collapse-item
-                                    data-collapse-item-expanded
-                                >
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Mattis in non ad sociosqu litora&period; Placerat vitae
-                                            imperdiet est libero ridiculus scelerisque proin&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-up.svg"
-                                            />
-                                        </button>
-                                    </div>
-
-                                    <div className="mt-4 grid">
-                                        <p className="faq-description">
-                                            Libero eleifend nec maximus nibh massa etiam&period;
-                                            Aliquet et augue sollicitudin litora at&quest; Magnis
-                                            cubilia dignissim netus className duis odio mauris&period;
-                                            Rutrum neque sociosqu&period;
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div data-default-item data-collapse-item>
-                                    <div className="faq-item-header">
-                                        <h3 className="text-lg leading-6">
-                                            Mattis in non ad sociosqu litora&period; Placerat vitae
-                                            imperdiet est libero ridiculus scelerisque proin&quest;
-                                        </h3>
-
-                                        <button className="icon-button collapse-button">
-                                            <img
-                                                className="h-full w-full"
-                                                loading="lazy"
-                                                alt="Toggle button"
-                                                src="/images/arrow--chevron-big-down.svg"
-                                            />
-                                        </button>
-                                    </div>
-                                </div>
-                            </li>
+                                    </li>
+                                )
+                            }
                         </ul>
                     </div>
                 </div>

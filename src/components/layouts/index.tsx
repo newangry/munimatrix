@@ -33,7 +33,7 @@ const Layout: FC<Props> = ({ children }) => {
             {
                 page == "/login" ?
                     children :
-                    <div>
+                    <div className="bg-background flex flex-col h-screen">
                         <Header
                         />
                         <main className="w-full bg-gray-200 flex flex-1">

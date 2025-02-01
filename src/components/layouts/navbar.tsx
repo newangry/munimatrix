@@ -1,11 +1,15 @@
 "use client"
 import { FC, ReactNode, useState } from "react"
 import Sidebar from "./sidebar";
+import { MENU } from "@/utils/consts";
+import { usePathname } from "next/navigation";
 interface Props {
 }
 
 
 const Navbar: FC<Props> = ({ }) => {
+    const pathname = usePathname();
+
     return (
         <div
             className="w-[70px] h-full bg-background flex flex-col items-start justify-start leading-[normal] tracking-[normal] text-left text-2xs text-white font-body"
@@ -20,70 +24,24 @@ const Navbar: FC<Props> = ({ }) => {
                         aria-label="Main Navigation"
                     >
                         <ul className="p-0 m-0 w-full">
-                            <li>
-                                <a href="#" className="sidebar-item selected" aria-current="page">
-                                    <img
-                                        className="w-6 h-6"
-                                        alt="home icon"
-                                        src="/images/home.svg"
-                                        aria-hidden="true"
-                                    />
-                                    <span>Home</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" className="sidebar-item">
-                                    <img
-                                        className="w-6 h-6 relative overflow-hidden shrink-0"
-                                        alt="discover icon"
-                                        src="/images/discover.svg"
-                                        aria-hidden="true"
-                                    />
-                                    <span>Discover</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/companies"
-                                    className="sidebar-item opacity-50 pointer-events-none"
-                                >
-                                    <img
-                                        className="w-6 h-6"
-                                        alt="companies icon"
-                                        src="/images/building--business.svg"
-                                        aria-hidden="true"
-                                    />
-                                    <span>Companies</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/saved-searches"
-                                    className="sidebar-item opacity-50 pointer-events-none"
-                                >
-                                    <img
-                                        className="w-6 h-6"
-                                        alt="saved searches icon"
-                                        src="/images/basic--heart-outline.svg"
-                                        aria-hidden="true"
-                                    />
-                                    <span className="text-center">Saved Searches</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="/contacts"
-                                    className="sidebar-item opacity-50 pointer-events-none"
-                                >
-                                    <img
-                                        className="w-6 h-6"
-                                        alt="contacts icon"
-                                        src="/images/user--group.svg"
-                                        aria-hidden="true"
-                                    />
-                                    <span>Contacts</span>
-                                </a>
-                            </li>
+                            {
+                                MENU.map((page, index) =>
+                                    <li key={`navbar-${index}`}>
+                                        <a
+                                            href={page.path}
+                                            className={`sidebar-item ${page.enable ? "" : "opacity-50 pointer-events-none"} ${pathname == page.path ? "selected" : ""}`}
+                                        >
+                                            <img
+                                                className="w-6 h-6"
+                                                alt="contacts icon"
+                                                src={`/images/${page.icon}`}
+                                                aria-hidden="true"
+                                            />
+                                            <span className="text-center">{ page.name }</span>
+                                        </a>
+                                    </li>
+                                )
+                            }
                         </ul>
                     </nav>
                 </aside>
