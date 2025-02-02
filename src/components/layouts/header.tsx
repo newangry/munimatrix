@@ -6,11 +6,8 @@ import { useRouter } from "next/navigation";
 interface Props {
 }
 
-
 const Header: FC<Props> = ({
-
 }) => {
-
     const [hiddenProfile, setHiddenProfile] = useState(true);
     const {
         state: { hidden_sidebar },
@@ -18,7 +15,6 @@ const Header: FC<Props> = ({
     } = useContext(HomeContext);
     const router = useRouter();
     useEffect(() => {
-
     }, []);
     return (
         <header
@@ -117,5 +113,4 @@ const Header: FC<Props> = ({
         </header>
     )
 }
-
 export default Header;
