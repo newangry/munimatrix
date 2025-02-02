@@ -35,7 +35,6 @@ const Header: FC<Props> = ({
                 >
                     <img className="w-full h-full" alt="Menu" src="/images/menu-icon.svg" />
                 </button>
-
                 <h1 className="w-main-logo h-main-logo shrink-0">
                     <a href="#" aria-label="Munimatrix Logo">
                         <span className="sr-only">Munimatrix</span>
