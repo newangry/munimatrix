@@ -6,11 +6,8 @@ import { useRouter } from "next/navigation";
 interface Props {
 }
 
-
 const Header: FC<Props> = ({
-
 }) => {
-
     const [hiddenProfile, setHiddenProfile] = useState(true);
     const {
         state: { hidden_sidebar },
@@ -18,7 +15,6 @@ const Header: FC<Props> = ({
     } = useContext(HomeContext);
     const router = useRouter();
     useEffect(() => {
-
     }, []);
     return (
         <header
@@ -39,7 +35,6 @@ const Header: FC<Props> = ({
                 >
                     <img className="w-full h-full" alt="Menu" src="/images/menu-icon.svg" />
                 </button>
-
                 <h1 className="w-main-logo h-main-logo shrink-0">
                     <a href="#" aria-label="Munimatrix Logo">
                         <span className="sr-only">Munimatrix</span>
@@ -51,9 +46,7 @@ const Header: FC<Props> = ({
                     </a>
                 </h1>
             </div>
-
             <Search />
-            
             <div className="flex items-center justify-between gap-10">
                 <div className="icon-button"
                     onClick={() => {
@@ -70,7 +63,6 @@ const Header: FC<Props> = ({
                         id="basicHelpCircleOutline"
                     />
                 </div>
-
                 <div className="icon-button">
                     <img
                         className="w-full h-full"
@@ -78,7 +70,6 @@ const Header: FC<Props> = ({
                         src="/images/notification-icon.svg"
                     />
                 </div>
-
                 <div className="relative">
                     <div className="icon-button">
                         <img
@@ -121,5 +112,4 @@ const Header: FC<Props> = ({
         </header>
     )
 }
-
 export default Header;
