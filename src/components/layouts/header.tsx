@@ -51,9 +51,7 @@ const Header: FC<Props> = ({
                     </a>
                 </h1>
             </div>
-
             <Search />
-            
             <div className="flex items-center justify-between gap-10">
                 <div className="icon-button"
                     onClick={() => {
@@ -70,7 +68,6 @@ const Header: FC<Props> = ({
                         id="basicHelpCircleOutline"
                     />
                 </div>
-
                 <div className="icon-button">
                     <img
                         className="w-full h-full"
@@ -78,7 +75,6 @@ const Header: FC<Props> = ({
                         src="/images/notification-icon.svg"
                     />
                 </div>
-
                 <div className="relative">
                     <div className="icon-button">
                         <img
